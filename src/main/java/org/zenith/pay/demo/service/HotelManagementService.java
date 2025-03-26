@@ -1,4 +1,4 @@
-package org.zenith.pay.demo.security;
+package org.zenith.pay.demo.service;
 
 import org.zenith.pay.demo.model.Customer;
 import org.zenith.pay.demo.model.Payment;

@@ -4,16 +4,22 @@ import org.zenith.pay.demo.model.Customer;
 import org.zenith.pay.demo.model.Payment;
 import org.zenith.pay.demo.model.Reservation;
 import org.zenith.pay.demo.model.Room;
-import org.zenith.pay.demo.security.HotelManagementService;
+import org.zenith.pay.demo.service.HotelManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 
 import java.util.List;
 
 @RestController
+@CrossOrigin(
+    origins = "*",
+    allowedHeaders = "*",
+    methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE}
+)
 @RequestMapping("/api/hotel")
-@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS})
 public class HotelManagementController {
 
     @Autowired
