@@ -26,8 +26,11 @@ public class Reservation {
 
     public enum ReservationStatus {
         Confirmed,
-        Cancelled
+        Cancelled,
+        Checked_In
     }
+    
+    
 
     // Getters and setters
     public Long getReservationId() {

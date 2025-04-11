@@ -8,8 +8,6 @@ import org.zenith.pay.demo.service.HotelManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.CrossOrigin;
-
 
 import java.util.List;
 
@@ -114,4 +112,23 @@ public class HotelManagementController {
     public ResponseEntity<List<Payment>> getPaymentsByReservation(@PathVariable Long reservationId) {
         return ResponseEntity.ok(hotelManagementService.getPaymentsByReservation(reservationId));
     }
+    @DeleteMapping("/customers/{id}")
+public ResponseEntity<String> deleteCustomer(@PathVariable Long id) {
+    hotelManagementService.deleteCustomer(id);
+    return ResponseEntity.ok("Customer deleted successfully.");
+}
+@DeleteMapping("/rooms/{id}")
+public ResponseEntity<String> deleteRoom(@PathVariable Long id) {
+    hotelManagementService.deleteRoom(id);
+    return ResponseEntity.ok("Room deleted successfully.");
+}
+@PutMapping("/rooms/{id}")
+public ResponseEntity<Room> updateRoom(@PathVariable Long id, @RequestBody Room updatedRoom) {
+    Room room = hotelManagementService.updateRoom(id, updatedRoom);
+    return ResponseEntity.ok(room);
+}
+
+
+
+
 }

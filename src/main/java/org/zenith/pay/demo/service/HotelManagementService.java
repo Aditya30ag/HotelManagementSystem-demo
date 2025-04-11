@@ -97,4 +97,28 @@ public class HotelManagementService {
     public List<Payment> getPaymentsByReservation(Long reservationId) {
         return paymentRepository.findByReservation_ReservationId(reservationId);
     }
+    public void deleteCustomer(Long id) {
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Customer not found with ID: " + id));
+        customerRepository.delete(customer);
+    }
+    public void deleteRoom(Long id) {
+        Room room = roomRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Room not found with ID: " + id));
+        roomRepository.delete(room);
+    }
+    public Room updateRoom(Long id, Room updatedRoom) {
+        Room room = roomRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Room not found with ID: " + id));
+    
+        room.setRoomNumber(updatedRoom.getRoomNumber());
+        room.setRoomType(updatedRoom.getRoomType());
+        room.setPricePerNight(updatedRoom.getPricePerNight());
+        room.setAvailable(updatedRoom.getAvailable());
+    
+        return roomRepository.save(room);
+    }
+    
+    
+    
 }
